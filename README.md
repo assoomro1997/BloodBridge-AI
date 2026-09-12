@@ -63,6 +63,11 @@ python tests/test_integration.py   # 4 full scenarios
 | `docs/` | Mehwish | PRD, architecture, flow, demo scenarios |
 | `app.py` | Anees | connects all modules |
 
+## Live app
+
+Deployed free on Streamlit Community Cloud. The app pulls straight from this
+repository, so every push updates the live version.
+
 ## Safety note
 
 Demo data only. A qualified blood bank must confirm every donor before any donation.
@@ -70,4 +75,4 @@ The AI never decides medical compatibility. That is fixed rule based logic in `b
 
 ## Free tools used
 
-Streamlit, Hugging Face Spaces, Hugging Face Inference API, Groq free tier, Python, CSV.
+Streamlit, Streamlit Community Cloud, Groq free tier, Hugging Face Inference API, Python, CSV.
