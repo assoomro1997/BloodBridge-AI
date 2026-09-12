@@ -1,7 +1,36 @@
 hospital_id,name,location,contact,emergency_available,beds_free
-H01,Peoples Medical University Hospital,Nawabshah,0244-9370201,True,18
-H02,Civil Hospital Nawabshah,Nawabshah,0244-9370202,True,9
-H03,Shaheed Mohtarma Benazir Trauma Centre,Nawabshah,0244-9370203,True,6
-H04,Taluka Hospital Sakrand,Sakrand,0244-9370204,False,4
-H05,THQ Hospital Daur,Daur,0242-9370205,True,7
-H06,Rural Health Centre Moro,Moro,0242-9370206,False,3
+H01,Jinnah Postgraduate Medical Centre,Karachi,072-5551051,True,34
+H02,Civil Hospital Karachi,Karachi,073-5551052,True,28
+H03,Aga Khan University Hospital,Karachi,074-5551053,True,19
+H04,Indus Hospital Korangi,Karachi,075-5551054,True,23
+H05,Liaquat National Hospital,Karachi,076-5551055,True,16
+H06,Abbasi Shaheed Hospital,Karachi,077-5551056,True,21
+H07,Mayo Hospital Lahore,Lahore,078-5551057,True,31
+H08,Services Hospital Lahore,Lahore,079-5551058,True,26
+H09,Jinnah Hospital Lahore,Lahore,080-5551059,True,24
+H10,Sir Ganga Ram Hospital,Lahore,081-5551060,True,14
+H11,Pakistan Institute of Medical Sciences,Islamabad,082-5551061,True,29
+H12,Shifa International Hospital,Islamabad,083-5551062,True,12
+H13,Holy Family Hospital,Rawalpindi,084-5551063,True,22
+H14,Benazir Bhutto Hospital,Rawalpindi,085-5551064,True,18
+H15,Lady Reading Hospital,Peshawar,086-5551065,True,27
+H16,Khyber Teaching Hospital,Peshawar,087-5551066,True,20
+H17,Hayatabad Medical Complex,Peshawar,088-5551067,True,17
+H18,Bolan Medical Complex Hospital,Quetta,089-5551068,True,15
+H19,Sandeman Provincial Hospital,Quetta,090-5551069,True,11
+H20,Nishtar Hospital Multan,Multan,021-5551070,True,25
+H21,Allied Hospital Faisalabad,Faisalabad,022-5551071,True,19
+H22,Liaquat University Hospital,Hyderabad,023-5551072,True,18
+H23,Peoples Medical University Hospital,Nawabshah,024-5551073,True,16
+H24,Civil Hospital Nawabshah,Nawabshah,025-5551074,True,9
+H25,Civil Hospital Sukkur,Sukkur,026-5551075,True,13
+H26,Chandka Medical College Hospital,Larkana,027-5551076,True,14
+H27,Bahawal Victoria Hospital,Bahawalpur,028-5551077,True,12
+H28,Ayub Teaching Hospital,Abbottabad,029-5551078,True,15
+H29,DHQ Teaching Hospital Sargodha,Sargodha,030-5551079,False,7
+H30,Allama Iqbal Memorial Teaching Hospital,Sialkot,031-5551080,True,10
+H31,DHQ Teaching Hospital Gujranwala,Gujranwala,032-5551081,True,11
+H32,Mardan Medical Complex,Mardan,033-5551082,True,9
+H33,Abbas Institute of Medical Sciences,Muzaffarabad,034-5551083,True,8
+H34,DHQ Hospital Gilgit,Gilgit,035-5551084,False,5
+H35,DHQ Hospital Mirpur,Mirpur AJK,036-5551085,True,7
