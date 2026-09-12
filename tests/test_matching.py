@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from backend.matching import (find_best_matches, find_compatible_donors,
                               is_compatible, is_eligible)
 from services.data_loader import attach_distances, load_donors
-from utils.geo import PAKISTAN_CITIES, city_distance, find_city
+from geo import PAKISTAN_CITIES, city_distance, find_city
 
 passed = 0
 failed = 0

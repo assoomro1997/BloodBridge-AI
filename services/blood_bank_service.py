@@ -7,7 +7,7 @@ This file gives the blood bank and hospital fallback.
 """
 
 from backend.matching import BLOOD_COMPATIBILITY, normalise_group
-from utils.geo import city_distance
+from geo import city_distance
 
 # Blood banks are worth travelling further for than a single donor.
 FACILITY_RADIUS_KM = 400

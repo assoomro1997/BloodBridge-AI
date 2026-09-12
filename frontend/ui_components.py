@@ -6,9 +6,14 @@ Every screen piece lives here as one small function.
 These functions only draw things. They never do matching.
 """
 
+import os
+import sys
+
 import streamlit as st
 
-from utils.geo import CITY_NAMES
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from geo import CITY_NAMES
 
 BLOOD_GROUPS = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
 URGENCY_LEVELS = ["high", "medium", "low"]

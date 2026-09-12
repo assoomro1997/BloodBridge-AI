@@ -21,7 +21,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from utils.geo import CITY_NAMES
+from geo import CITY_NAMES
 
 GROQ_MODEL = "llama-3.1-8b-instant"
 HF_MODEL = "meta-llama/Llama-3.2-3B-Instruct"

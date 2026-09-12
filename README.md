@@ -56,7 +56,7 @@ with the haversine formula, then capped at a 150 km search radius for donors and
 | `frontend/` | Iqra | every Streamlit screen piece |
 | `services/` | Anees | data loader, blood bank and hospital lookup |
 | `tests/` | all | backend, AI and end to end tests |
-| `utils/` | Anees | city coordinates and distance calculation |
+| `geo.py` | Anees | city coordinates and distance calculation |
 | `docs/` | Mehwish | PRD, architecture, flow, demo scenarios |
 | `app.py` | Anees | connects all modules |
 

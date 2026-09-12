@@ -261,7 +261,7 @@ A donor must pass all five checks to be scored:
 
 ### 10.2b Geography
 
-`utils/geo.py` holds the coordinates of 47 Pakistani cities covering all four
+`geo.py` holds the coordinates of 47 Pakistani cities covering all four
 provinces, Islamabad, Azad Kashmir and Gilgit-Baltistan. Distance between two
 cities is calculated with the haversine formula at run time.
 
