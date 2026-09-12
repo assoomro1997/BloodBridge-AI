@@ -338,7 +338,7 @@ built on purpose so that a network failure during judging does not break the dem
 | Layer | Tool | Cost |
 |---|---|---|
 | Interface | Streamlit | Free |
-| Hosting | Hugging Face Spaces | Free |
+| Hosting | Streamlit Community Cloud | Free |
 | Language model, first choice | Groq Llama 3.1 | Free tier |
 | Language model, second choice | Hugging Face Inference API | Free tier |
 | Matching engine | Python | Free |
@@ -426,7 +426,7 @@ in parallel without merge conflicts.
 | 5 | Full integration in `app.py` | Done |
 | 6 | Blood bank and hospital fallback | Done |
 | 7 | Automated tests, 39 checks passing | Done |
-| 8 | Deploy to Hugging Face Spaces | In progress |
+| 8 | Deploy to Streamlit Community Cloud | In progress |
 | 9 | Slides, PRD and demo video | In progress |
 | 10 | Final submission | 13 September 2026, 11:59 PM PKT |
 
