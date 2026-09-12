@@ -2,6 +2,8 @@
 
 Right blood. Right place. Right time.
 
+**Live app: https://bloodbridge-ai-pk.streamlit.app/**
+
 Finding a blood donor in an emergency takes hours of phone calls. BloodBridge AI reads
 a request in plain language, checks medical compatibility, filters donors who are
 available and eligible, ranks them by distance and urgency, and writes the message
@@ -10,7 +12,7 @@ that goes to the donor.
 ## How to run it
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/assoomro1997/BloodBridge-AI.git
 cd BloodBridge-AI
 pip install -r requirements.txt
 streamlit run app.py
@@ -62,8 +64,11 @@ with the haversine formula, then capped at a 150 km search radius for donors and
 
 ## Live app
 
+https://bloodbridge-ai-pk.streamlit.app/
+
 Deployed free on Streamlit Community Cloud. The app pulls straight from this
-repository, so every push updates the live version.
+repository, so every push updates the live version. Data file changes need a
+reboot from Manage app, because the CSVs are cached at start up.
 
 ## Safety note
 
