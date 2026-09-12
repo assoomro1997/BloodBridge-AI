@@ -15,7 +15,7 @@ from ai.ai_module import analyze_request, explain_match, generate_donor_message,
 from backend.matching import find_best_matches
 from frontend import ui_components as ui
 from services.blood_bank_service import find_blood_banks, find_emergency_hospitals
-from services.data_loader import attach_distances, load_blood_banks, load_donors, load_hospitals
+from services.data_loader import SEARCH_RADIUS_KM, attach_distances, load_blood_banks, load_donors, load_hospitals
 
 st.set_page_config(page_title="BloodBridge AI", page_icon="🩸", layout="centered")
 
@@ -25,19 +25,22 @@ def get_data():
     return load_donors(), load_blood_banks(), load_hospitals()
 
 
-def run_search(blood_group, urgency, city, hospital, donors, banks, hospitals, use_ai_text=False):
+def run_search(blood_group, urgency, city, hospital, donors, banks, hospitals, explain=False):
     """One search run, used by both tabs."""
     nearby = attach_distances(donors, city)
     matches = find_best_matches(blood_group, urgency, nearby, top_n=5)
 
-    if matches and use_ai_text:
-        matches[0]["reason"] = explain_match(matches[0], blood_group, urgency)
-
-    ui.show_donor_results(matches)
-
     if matches:
-        message = generate_donor_message(matches[0]["name"], blood_group, urgency, hospital)
-        ui.show_sms_preview(message)
+        if explain:
+            matches[0]["reason"] = explain_match(matches[0], blood_group, urgency)
+
+        ui.show_result_count(len(matches), city, SEARCH_RADIUS_KM)
+        ui.show_donor_results(matches, patient_group=blood_group)
+        ui.show_sms_preview(
+            generate_donor_message(matches[0]["name"], blood_group, urgency, hospital)
+        )
+    else:
+        ui.show_no_donor(city, SEARCH_RADIUS_KM)
 
     ui.show_blood_banks(find_blood_banks(blood_group, banks, city))
     ui.show_hospitals(find_emergency_hospitals(hospitals, city))
@@ -45,18 +48,11 @@ def run_search(blood_group, urgency, city, hospital, donors, banks, hospitals, u
 
 def main():
     donors, banks, hospitals = get_data()
-    ui.show_header()
+    provider = get_provider()
 
-    with st.sidebar:
-        st.header("System status")
-        st.write(f"Donors in database: {len(donors)}")
-        st.write(f"Blood banks: {len(banks)}")
-        st.write(f"Hospitals: {len(hospitals)}")
-        st.write(f"AI provider: {get_provider()}")
-        st.divider()
-        st.caption("Demo data only. A blood bank must confirm every donor before donation.")
+    ui.show_header(provider, len(donors), len(banks), len(hospitals))
 
-    tab_form, tab_ai = st.tabs(["Quick request", "AI request"])
+    tab_form, tab_ai = st.tabs(["Quick request", "Describe it in words"])
 
     with tab_form:
         form = ui.show_request_form()
@@ -77,18 +73,15 @@ def main():
             ui.show_parsed_request(parsed)
 
             if not parsed.get("blood_group"):
-                st.error("Blood group not found in the message. Please write it, for example B+.")
+                st.error("No blood group found in that message. Please write it, for example B+.")
             else:
+                place = parsed.get("location") or "Nawabshah"
                 run_search(
-                    parsed["blood_group"],
-                    parsed.get("urgency", "medium"),
-                    parsed.get("location") or "Nawabshah",
-                    parsed.get("location") or "the nearest hospital",
-                    donors, banks, hospitals,
-                    use_ai_text=True,
+                    parsed["blood_group"], parsed.get("urgency", "medium"), place, place,
+                    donors, banks, hospitals, explain=True,
                 )
 
-    ui.show_footer(get_provider())
+    ui.show_footer(provider)
 
 
 if __name__ == "__main__":
