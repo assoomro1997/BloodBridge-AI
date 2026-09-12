@@ -17,6 +17,11 @@ so the demo never breaks in front of the judges.
 import json
 import os
 import re
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from utils.geo import CITY_NAMES
 
 GROQ_MODEL = "llama-3.1-8b-instant"
 HF_MODEL = "meta-llama/Llama-3.2-3B-Instruct"
@@ -27,7 +32,7 @@ HIGH_WORDS = ["urgent", "emergency", "critical", "immediately", "abhi", "foran",
               "jaldi", "serious", "accident", "surgery", "operation", "now"]
 LOW_WORDS = ["planned", "routine", "next week", "scheduled", "baad mein", "koi jaldi nahi"]
 
-CITIES = ["Nawabshah", "Sakrand", "Daur", "Moro", "Khairpur", "Sukkur", "Hyderabad", "Larkana", "Karachi"]
+CITIES = CITY_NAMES
 
 SYSTEM_PROMPT = """You are the request reader for a blood donation app.
 Read the user message and return ONLY a JSON object, no other text.
@@ -131,7 +136,7 @@ def rule_based_analyze(text):
         urgency = "low"
 
     location = None
-    for city in CITIES:
+    for city in sorted(CITIES, key=len, reverse=True):
         if city.lower() in lower:
             location = city
             break
