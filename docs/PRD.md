@@ -13,7 +13,7 @@ Right blood. Right place. Right time.
 | Team Lead and Technical Lead | Anees Ahmed |
 | Co-Lead and Submission Coordinator | Eman Fatima |
 | Document owner | Anees Ahmed |
-| Status | MVP built and tested. Deployment in progress. |
+| Status | MVP built, tested and deployed live. |
 
 ---
 
@@ -444,7 +444,7 @@ in parallel without merge conflicts.
 | 5 | Full integration in `app.py` | Done |
 | 6 | Blood bank and hospital fallback, nationwide coverage | Done |
 | 7 | Automated tests, 51 checks passing | Done |
-| 8 | Deploy to Streamlit Community Cloud | In progress |
+| 8 | Deploy to Streamlit Community Cloud | Done |
 | 9 | Slides, PRD and demo video | In progress |
 | 10 | Final submission | 13 September 2026, 11:59 PM PKT |
 
@@ -454,11 +454,11 @@ in parallel without merge conflicts.
 
 | Item | Link |
 |---|---|
-| Live app | to be added |
-| Code repository | to be added |
-| Presentation slides | to be added |
-| This document | to be added |
-| Presentation video | to be added |
+| Live app | https://bloodbridge-ai-pk.streamlit.app/ |
+| Code repository | see the hackathon registration form |
+| Presentation slides | see the hackathon registration form |
+| This document | see the hackathon registration form |
+| Presentation video | see the hackathon registration form |
 
 ---
 
