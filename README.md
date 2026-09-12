@@ -21,7 +21,7 @@ that goes to the donor.
 ## How to run it
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/assoomro1997/BloodBridge-AI
 cd BloodBridge-AI
 pip install -r requirements.txt
 streamlit run app.py
