@@ -1,0 +1,7 @@
+bank_id,name,blood_groups_available,location,available_units,contact,open_24h
+BB01,Peoples Medical College Blood Bank,"A+,B+,O+,AB+,O-",Nawabshah,64,0244-9370101,True
+BB02,Sindh Blood Transfusion Centre,"A+,A-,B+,B-,O+,O-",Nawabshah,48,0244-9370102,True
+BB03,Al-Khidmat Blood Bank,"B+,O+,A+",Nawabshah,27,0244-9370103,False
+BB04,Fatimid Foundation Sakrand,"A+,B+,AB+,AB-,O+",Sakrand,35,0244-9370104,False
+BB05,Indus Hospital Blood Centre,"A+,A-,B+,B-,AB+,AB-,O+,O-",Daur,52,0242-9370105,True
+BB06,Red Crescent Blood Bank,"O+,O-,B+",Moro,19,0242-9370106,False

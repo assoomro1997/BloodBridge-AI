@@ -1,0 +1,26 @@
+donor_id,name,blood_group,available,eligible,distance_km,city,contact,last_donation_days
+D001,Ali Raza,B+,True,True,2.5,Nawabshah,0300-1234501,180
+D002,Ahmed Khan,O+,True,True,8.0,Nawabshah,0300-1234502,120
+D003,Usman Memon,A+,True,True,1.8,Nawabshah,0300-1234503,200
+D004,Hamza Soomro,O-,True,True,12.4,Sakrand,0300-1234504,365
+D005,Bilal Shaikh,B+,False,True,1.2,Nawabshah,0300-1234505,150
+D006,Zainab Qureshi,B-,True,True,4.6,Nawabshah,0300-1234506,220
+D007,Fatima Abbasi,AB+,True,True,6.3,Nawabshah,0300-1234507,300
+D008,Sana Jatoi,O-,True,True,3.1,Nawabshah,0300-1234508,95
+D009,Kashif Lashari,A-,True,False,2.0,Nawabshah,0300-1234509,30
+D010,Imran Chandio,O+,True,True,15.7,Sakrand,0300-1234510,400
+D011,Hina Mirani,AB-,True,True,9.2,Nawabshah,0300-1234511,240
+D012,Rizwan Bhatti,B+,True,True,5.4,Nawabshah,0300-1234512,110
+D013,Noman Jamali,A+,False,True,0.9,Nawabshah,0300-1234513,190
+D014,Ayesha Panhwar,O+,True,True,2.2,Nawabshah,0300-1234514,160
+D015,Tariq Mahar,B-,True,True,18.0,Daur,0300-1234515,280
+D016,Saad Unar,AB+,True,False,7.5,Nawabshah,0300-1234516,45
+D017,Rabia Solangi,A-,True,True,3.8,Nawabshah,0300-1234517,210
+D018,Waqar Chang,O-,False,True,6.0,Nawabshah,0300-1234518,130
+D019,Junaid Khaskheli,B+,True,True,22.5,Moro,0300-1234519,340
+D020,Mehak Rind,A+,True,True,4.1,Nawabshah,0300-1234520,175
+D021,Shahid Sial,O+,True,True,1.5,Nawabshah,0300-1234521,260
+D022,Nadia Bughio,AB+,True,True,11.0,Sakrand,0300-1234522,150
+D023,Faisal Detho,B-,True,True,2.8,Nawabshah,0300-1234523,320
+D024,Uzma Dahri,O-,True,True,7.9,Nawabshah,0300-1234524,180
+D025,Adnan Palijo,A+,True,True,13.3,Daur,0300-1234525,145

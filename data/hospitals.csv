@@ -1,0 +1,7 @@
+hospital_id,name,location,contact,emergency_available,beds_free
+H01,Peoples Medical University Hospital,Nawabshah,0244-9370201,True,18
+H02,Civil Hospital Nawabshah,Nawabshah,0244-9370202,True,9
+H03,Shaheed Mohtarma Benazir Trauma Centre,Nawabshah,0244-9370203,True,6
+H04,Taluka Hospital Sakrand,Sakrand,0244-9370204,False,4
+H05,THQ Hospital Daur,Daur,0242-9370205,True,7
+H06,Rural Health Centre Moro,Moro,0242-9370206,False,3
