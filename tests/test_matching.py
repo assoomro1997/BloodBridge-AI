@@ -13,7 +13,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from backend.matching import (find_best_matches, find_compatible_donors,
                               is_compatible, is_eligible)
-from services.data_loader import load_donors
+from services.data_loader import attach_distances, load_donors
+from utils.geo import PAKISTAN_CITIES, city_distance, find_city
 
 passed = 0
 failed = 0
@@ -66,6 +67,26 @@ check("urgency changes the ranking or the scores",
       or high[0]["score"] != low[0]["score"])
 check("high urgency puts the nearest donor first",
       high[0]["distance_km"] <= 6)
+
+# Geography
+check("city list covers all provinces", len(PAKISTAN_CITIES) >= 40)
+check("Karachi to Lahore is about 1030 km", 1000 <= city_distance("Karachi", "Lahore") <= 1070)
+check("same city is zero km", city_distance("Lahore", "Lahore") == 0.0)
+check("unknown city returns None", city_distance("Atlantis", "Lahore") is None)
+check("loose city match works", find_city("nawabshah, sindh") == "Nawabshah")
+
+local = attach_distances(donors, "Karachi")
+check("far donors dropped from the radius", all(d["distance_km"] <= 150 for d in local))
+check("Karachi search keeps Karachi donors",
+      any(d["city"] == "Karachi" for d in local))
+check("Karachi search drops Quetta donors",
+      not any(d["city"] == "Quetta" for d in local))
+check("unknown patient city does not drop everyone",
+      len(attach_distances(donors, "Atlantis")) == len(donors))
+
+far = find_best_matches("O-", "high", attach_distances(donors, "Karachi"))
+check("nationwide search still returns a match", len(far) > 0)
+check("matched donor is inside the radius", far[0]["distance_km"] <= 150)
 
 empty = find_best_matches("B+", "high", [])
 check("no donors gives an empty list", empty == [])

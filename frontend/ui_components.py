@@ -8,9 +8,11 @@ These functions only draw things. They never do matching.
 
 import streamlit as st
 
+from utils.geo import CITY_NAMES
+
 BLOOD_GROUPS = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
 URGENCY_LEVELS = ["high", "medium", "low"]
-CITIES = ["Nawabshah", "Sakrand", "Daur", "Moro"]
+CITIES = CITY_NAMES
 
 MEDAL = {1: "1st", 2: "2nd", 3: "3rd"}
 
@@ -52,7 +54,7 @@ def show_request_form():
 
     with col1:
         blood_group = st.selectbox("Patient blood group", BLOOD_GROUPS, index=2)
-        city = st.selectbox("City", CITIES)
+        city = st.selectbox("Patient city", CITIES, index=CITIES.index("Nawabshah"))
 
     with col2:
         urgency = st.selectbox("Urgency", URGENCY_LEVELS)
@@ -125,8 +127,10 @@ def show_blood_banks(banks):
 
     for bank in banks[:4]:
         open_text = "Open 24 hours" if bank["open_24h"] else "Day hours only"
+        away = bank.get("distance_km")
+        place = bank["location"] if not away else f"{bank['location']} ({away} km)"
         st.markdown(
-            f"**{bank['name']}** - {bank['location']}  \n"
+            f"**{bank['name']}** - {place}  \n"
             f"Usable groups: {', '.join(bank['usable_groups'])}  \n"
             f"{bank['available_units']} units | {open_text} | {bank['contact']}"
         )
@@ -140,8 +144,10 @@ def show_hospitals(hospitals):
     st.subheader("Emergency hospitals")
 
     for hospital in hospitals[:4]:
+        away = hospital.get("distance_km")
+        place = hospital["location"] if not away else f"{hospital['location']} ({away} km)"
         st.markdown(
-            f"**{hospital['name']}** - {hospital['location']}  \n"
+            f"**{hospital['name']}** - {place}  \n"
             f"{hospital['beds_free']} emergency beds free | {hospital['contact']}"
         )
 

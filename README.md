@@ -1,14 +1,3 @@
----
-title: BloodBridge AI
-emoji: 🩸
-colorFrom: red
-colorTo: gray
-sdk: streamlit
-sdk_version: 1.37.0
-app_file: app.py
-pinned: false
----
-
 # BloodBridge AI
 
 Right blood. Right place. Right time.
@@ -21,7 +10,7 @@ that goes to the donor.
 ## How to run it
 
 ```bash
-git clone https://github.com/assoomro1997/BloodBridge-AI
+git clone <repo-url>
 cd BloodBridge-AI
 pip install -r requirements.txt
 streamlit run app.py
@@ -45,10 +34,17 @@ HF_TOKEN=your_token_here
 ## Run the tests
 
 ```bash
-python tests/test_matching.py      # 25 backend checks
+python tests/test_matching.py      # 36 backend and geography checks
 python tests/test_ai.py            # 10 AI checks
-python tests/test_integration.py   # 4 full scenarios
+python tests/test_integration.py   # 5 full scenarios
 ```
+
+## Coverage
+
+47 cities across Punjab, Sindh, Khyber Pakhtunkhwa, Balochistan, Islamabad,
+Azad Kashmir and Gilgit-Baltistan. Distance is calculated from real coordinates
+with the haversine formula, then capped at a 150 km search radius for donors and
+400 km for blood banks and hospitals.
 
 ## Folder map
 
@@ -60,6 +56,7 @@ python tests/test_integration.py   # 4 full scenarios
 | `frontend/` | Iqra | every Streamlit screen piece |
 | `services/` | Anees | data loader, blood bank and hospital lookup |
 | `tests/` | all | backend, AI and end to end tests |
+| `utils/` | Anees | city coordinates and distance calculation |
 | `docs/` | Mehwish | PRD, architecture, flow, demo scenarios |
 | `app.py` | Anees | connects all modules |
 

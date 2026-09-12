@@ -18,6 +18,11 @@
 
 `app.py` sits on top and calls each layer in order. Anees owns that file.
 
+`utils/geo.py` holds the coordinates of 47 Pakistani cities. The service layer uses
+it to turn a donor local distance into a real distance from the patient, then drops
+anyone outside the 150 km search radius. The matching engine never changes: it still
+just reads distance_km.
+
 ## Request journey
 
 1. User types a request, by form or in plain words.

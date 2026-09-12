@@ -17,13 +17,14 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from ai.ai_module import analyze_request, generate_donor_message
 from backend.matching import find_best_matches
 from services.blood_bank_service import find_blood_banks, find_emergency_hospitals
-from services.data_loader import load_blood_banks, load_donors, load_hospitals
+from services.data_loader import attach_distances, load_blood_banks, load_donors, load_hospitals
 
 SCENARIOS = [
     "My brother urgently needs B+ blood near Nawabshah",
-    "O negative blood required at Sakrand, routine case next week",
-    "Accident, AB negative khoon foran chahiye Daur mein",
-    "Patient needs A- blood in Moro, serious condition",
+    "O negative blood required in Lahore, routine case next week",
+    "Accident, AB negative khoon foran chahiye Peshawar mein",
+    "Patient needs A- blood in Quetta, serious condition",
+    "Urgent B+ blood required at Gilgit",
 ]
 
 donors = load_donors()
@@ -47,13 +48,16 @@ for number, sentence in enumerate(SCENARIOS, start=1):
         failed += 1
         continue
 
-    matches = find_best_matches(parsed["blood_group"], parsed["urgency"], donors)
+    city = parsed["location"] or "Nawabshah"
+    nearby = attach_distances(donors, city)
+    print(f"Donors inside {city} search radius: {len(nearby)}")
+    matches = find_best_matches(parsed["blood_group"], parsed["urgency"], nearby)
 
     if matches:
         print(f"\nTop {len(matches)} donors:")
         for position, donor in enumerate(matches, start=1):
             print(f"  {position}. {donor['name']:<20} {donor['blood_group']:<4} "
-                  f"{donor['distance_km']:>5} km   score {donor['score']}")
+                  f"{donor['city']:<12} {donor['distance_km']:>6} km   score {donor['score']}")
         print("\nSMS:", generate_donor_message(matches[0]["name"], parsed["blood_group"], parsed["urgency"]))
     else:
         print("\nNo donor found. Falling back to blood banks.")

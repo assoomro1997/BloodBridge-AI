@@ -8,6 +8,11 @@ that the matching engine can use.
 
 import csv
 import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from utils.geo import city_distance
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
 
@@ -93,6 +98,47 @@ def load_hospitals():
         })
 
     return hospitals
+
+
+UNKNOWN_CITY_PENALTY = 999
+
+# A donor 1000 km away cannot help in an emergency.
+# Anything past this radius is dropped and the blood bank layer takes over.
+SEARCH_RADIUS_KM = 150
+
+
+def attach_distances(donors, patient_city, radius_km=SEARCH_RADIUS_KM):
+    """
+    Turn each donor's local distance into a real distance from the patient.
+
+    Same city  -> the donor's own local distance
+    Other city -> city to city distance plus the local distance
+
+    Donors past the search radius are dropped. The matching engine still
+    reads distance_km, so nothing else changes.
+    """
+    if city_distance(patient_city, patient_city) is None:
+        # City not in our list. Fall back to local distances only.
+        return [dict(donor) for donor in donors]
+
+    updated = []
+
+    for donor in donors:
+        row = dict(donor)
+        local = to_float(row.get("distance_km"), 0)
+        between = city_distance(row.get("city"), patient_city)
+
+        if between is None:
+            row["distance_km"] = UNKNOWN_CITY_PENALTY
+        else:
+            row["distance_km"] = round(between + local, 1)
+
+        row["local_km"] = local
+
+        if row["distance_km"] <= radius_km:
+            updated.append(row)
+
+    return updated
 
 
 if __name__ == "__main__":

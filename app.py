@@ -15,7 +15,7 @@ from ai.ai_module import analyze_request, explain_match, generate_donor_message,
 from backend.matching import find_best_matches
 from frontend import ui_components as ui
 from services.blood_bank_service import find_blood_banks, find_emergency_hospitals
-from services.data_loader import load_blood_banks, load_donors, load_hospitals
+from services.data_loader import attach_distances, load_blood_banks, load_donors, load_hospitals
 
 st.set_page_config(page_title="BloodBridge AI", page_icon="🩸", layout="centered")
 
@@ -27,7 +27,8 @@ def get_data():
 
 def run_search(blood_group, urgency, city, hospital, donors, banks, hospitals, use_ai_text=False):
     """One search run, used by both tabs."""
-    matches = find_best_matches(blood_group, urgency, donors, top_n=5)
+    nearby = attach_distances(donors, city)
+    matches = find_best_matches(blood_group, urgency, nearby, top_n=5)
 
     if matches and use_ai_text:
         matches[0]["reason"] = explain_match(matches[0], blood_group, urgency)

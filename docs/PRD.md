@@ -45,8 +45,9 @@ not filtered, and not ranked.
 | G1 | Turn a blood request into a ranked donor list in under one second | Time from search click to results |
 | G2 | Never return a medically wrong match | Every compatibility rule covered by an automated test |
 | G3 | Accept a request in plain language, English or Roman Urdu | Test sentences in both languages return correct fields |
-| G4 | Never show an empty screen | Blood bank and hospital fallback always appears |
-| G5 | Run on free tools only | No paid service anywhere in the stack |
+| G4 | Work in any major Pakistani city | 47 cities across all provinces and territories |
+| G5 | Never show an empty screen | Blood bank and hospital fallback always appears |
+| G6 | Run on free tools only | No paid service anywhere in the stack |
 
 ## 3. Non-goals
 
@@ -107,6 +108,7 @@ Priority: P0 is required for the MVP. P1 is built if time allows. P2 is future w
 | FR2.2 | The system removes donors marked unavailable | P0 | Done |
 | FR2.3 | The system removes donors marked ineligible | P0 | Done |
 | FR2.4 | The system removes donors who donated less than 90 days ago | P0 | Done |
+| FR2.4b | The system removes donors beyond the 150 km search radius | P0 | Done |
 | FR2.5 | The system scores every remaining donor out of 100 | P0 | Done |
 | FR2.6 | Urgency changes the weight of blood group match, distance and readiness | P0 | Done |
 | FR2.7 | The system returns the top five donors, highest score first | P0 | Done |
@@ -249,12 +251,28 @@ a model output.
 
 ### 10.2 Filters
 
-A donor must pass all four checks to be scored:
+A donor must pass all five checks to be scored:
 
 1. Blood group is compatible with the patient.
 2. Donor is marked available.
 3. Donor is marked eligible.
 4. At least 90 days have passed since the donor last gave blood.
+5. The donor is within the 150 km search radius of the patient city.
+
+### 10.2b Geography
+
+`utils/geo.py` holds the coordinates of 47 Pakistani cities covering all four
+provinces, Islamabad, Azad Kashmir and Gilgit-Baltistan. Distance between two
+cities is calculated with the haversine formula at run time.
+
+A donor record stores only the local distance inside their own city. The service
+layer adds the city to city distance on top, so the same donor file works for a
+patient searching from any city. The matching engine is unchanged: it still reads
+one `distance_km` value.
+
+Donors past 150 km are dropped, because someone that far away cannot help in an
+emergency. Blood banks and hospitals use a wider 400 km radius, because a hospital
+will send a vehicle for units when no donor is available.
 
 ### 10.3 Scoring
 
@@ -342,7 +360,7 @@ built on purpose so that a network failure during judging does not break the dem
 | Language model, first choice | Groq Llama 3.1 | Free tier |
 | Language model, second choice | Hugging Face Inference API | Free tier |
 | Matching engine | Python | Free |
-| Data layer | CSV files | Free |
+| Data layer | CSV files and city coordinates | Free |
 | Version control | GitHub | Free |
 
 ---
@@ -351,9 +369,9 @@ built on purpose so that a network failure during judging does not break the dem
 
 | Metric | Target | Result |
 |---|---|---|
-| Matching engine tests passing | All | 25 of 25 |
+| Matching engine and geography tests passing | All | 36 of 36 |
 | AI module tests passing | All | 10 of 10 |
-| End to end demo scenarios completing | All | 4 of 4 |
+| End to end demo scenarios completing | All | 5 of 5 |
 | Search response time | Under 1 second | Met |
 | Works with no API key | Yes | Yes |
 | Cost of the stack | Zero | Zero |
@@ -424,8 +442,8 @@ in parallel without merge conflicts.
 | 3 | AI request reader with fallback | Done |
 | 4 | Streamlit interface | Done |
 | 5 | Full integration in `app.py` | Done |
-| 6 | Blood bank and hospital fallback | Done |
-| 7 | Automated tests, 39 checks passing | Done |
+| 6 | Blood bank and hospital fallback, nationwide coverage | Done |
+| 7 | Automated tests, 51 checks passing | Done |
 | 8 | Deploy to Streamlit Community Cloud | In progress |
 | 9 | Slides, PRD and demo video | In progress |
 | 10 | Final submission | 13 September 2026, 11:59 PM PKT |

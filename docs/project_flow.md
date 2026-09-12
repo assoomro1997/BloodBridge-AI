@@ -10,7 +10,7 @@ Step 4  Streamlit screens             done
 Step 5  connect everything in app.py  done
 Step 6  blood bank and hospital backup done
 Step 7  tests                         done
-Step 8  deploy to Hugging Face Spaces
+Step 8  deploy to Streamlit Community Cloud
 Step 9  pitch deck and demo video
 ```
 
