@@ -55,6 +55,7 @@ PALETTES = {
         --crimson-wash: #FBEDEE;
         --tag-sub: #16242D;
         --tag-sub-ink: #FFFFFF;
+        --green-wash: #EAF4EF;
         --amber: #A86400;
         --green: #1F7A4C;
         --shadow: 0 1px 2px rgba(22, 36, 45, 0.06);
@@ -73,6 +74,7 @@ PALETTES = {
         --crimson-wash: #2A1417;
         --tag-sub: #2E4150;
         --tag-sub-ink: #EDF3F7;
+        --green-wash: #16281F;
         --amber: #E5A64A;
         --green: #46BE86;
         --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
@@ -165,6 +167,68 @@ html, body, .stApp, .stMarkdown, input, textarea, button, select {
 .bb-consent { font-family: 'IBM Plex Sans', sans-serif; letter-spacing: 0; margin-left: 0.7rem; }
 .bb-free { color: var(--green); font-weight: 600; }
 
+.bb-where { font-size: 0.87rem; color: var(--body); margin: 0.18rem 0 0 0; }
+.bb-where b { color: var(--ink); font-weight: 500; }
+.bb-call {
+    display: inline-block; margin-top: 0.4rem; padding: 0.26rem 0.62rem;
+    border: 1px solid var(--line); border-radius: 5px; background: var(--raised);
+    font-size: 0.85rem; font-weight: 600; color: var(--crimson) !important;
+    text-decoration: none !important; transition: border-color 0.15s ease;
+}
+.bb-call:hover { border-color: var(--crimson); }
+.bb-call:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+.bb-universal {
+    display: inline-block; margin-left: 0.45rem; padding: 0.1rem 0.42rem;
+    border: 1px solid var(--green); border-radius: 3px;
+    font-size: 0.66rem; font-weight: 600; color: var(--green);
+    vertical-align: 2px;
+}
+
+/* ---------------- facility cards ---------------- */
+.bb-fac {
+    display: flex; align-items: stretch; gap: 0;
+    border: 1px solid var(--line); border-radius: 8px;
+    background: var(--surface); box-shadow: var(--shadow);
+    overflow: hidden; margin-bottom: 0.55rem;
+}
+.bb-fac__count {
+    flex: 0 0 78px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 0.75rem 0.3rem;
+    background: var(--crimson-wash); border-right: 1px solid var(--line);
+}
+.bb-fac--care .bb-fac__count { background: var(--green-wash); }
+.bb-fac__num {
+    font-size: 1.35rem; font-weight: 700; line-height: 1;
+    letter-spacing: -0.03em; color: var(--crimson);
+}
+.bb-fac--care .bb-fac__num { color: var(--green); }
+.bb-fac__unit { font-size: 0.63rem; color: var(--faint); margin-top: 0.22rem; }
+.bb-fac__body { flex: 1 1 0; min-width: 0; padding: 0.7rem 1rem; }
+.bb-fac__name { font-size: 0.97rem; font-weight: 600; color: var(--ink); margin: 0; }
+.bb-fac__meta { font-size: 0.81rem; color: var(--body); margin: 0.16rem 0 0 0; }
+.bb-fac__groups { margin-top: 0.4rem; display: flex; gap: 0.25rem; flex-wrap: wrap; }
+.bb-pill {
+    border: 1px solid var(--line); border-radius: 3px; padding: 0.08rem 0.34rem;
+    font-size: 0.7rem; font-weight: 600; color: var(--body); background: var(--raised);
+}
+.bb-open {
+    font-size: 0.72rem; font-weight: 600; color: var(--green);
+    border: 1px solid var(--green); border-radius: 3px; padding: 0.06rem 0.36rem;
+}
+.bb-shut {
+    font-size: 0.72rem; font-weight: 600; color: var(--amber);
+    border: 1px solid var(--amber); border-radius: 3px; padding: 0.06rem 0.36rem;
+}
+.bb-fac__far {
+    flex: 0 0 auto; display: flex; align-items: center; padding: 0 0.9rem;
+    border-left: 1px solid var(--line-soft); font-size: 0.77rem;
+    font-weight: 500; color: var(--body); white-space: nowrap;
+}
+@media (max-width: 640px) {
+    .bb-fac__count { flex: 0 0 62px; }
+    .bb-fac__far { padding: 0 0.6rem; }
+}
+
 .bb-score {
     flex: 0 0 104px; display: flex; flex-direction: column;
     align-items: center; justify-content: center;
@@ -217,20 +281,6 @@ html, body, .stApp, .stMarkdown, input, textarea, button, select {
 .bb-chip--low { border-left-color: var(--green); }
 .bb-chip--plain { border-left-color: var(--line); }
 
-/* ---------------- facility rows ---------------- */
-.bb-row {
-    display: flex; align-items: flex-start; justify-content: space-between;
-    gap: 1rem; padding: 0.72rem 0; border-bottom: 1px solid var(--line-soft);
-}
-.bb-row__name { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin: 0; }
-.bb-row__meta { font-size: 0.81rem; color: var(--body); margin: 0.15rem 0 0 0; }
-.bb-row__stock { font-size: 0.77rem; color: var(--faint); margin: 0.2rem 0 0 0; }
-.bb-row__far {
-    flex: 0 0 auto; font-size: 0.76rem; color: var(--body); font-weight: 500;
-    background: var(--raised); border: 1px solid var(--line);
-    border-radius: 4px; padding: 0.22rem 0.5rem; white-space: nowrap;
-}
-
 /* ---------------- donor message ---------------- */
 .bb-sms {
     border: 1px solid var(--line); border-radius: 10px 10px 10px 3px;
@@ -249,7 +299,7 @@ html, body, .stApp, .stMarkdown, input, textarea, button, select {
 .stButton > button:active { background: var(--crimson-deep); color: #FFFFFF; }
 .stButton > button:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
 
-label, .stMarkdown p, [data-testid="stWidgetLabel"] p { color: var(--body) !important; }
+[data-testid="stWidgetLabel"] p, [data-testid="stWidgetLabel"] label { color: var(--body) !important; }
 
 /* widget surfaces, so both themes stay consistent */
 [data-testid="stSelectbox"] > div > div,
@@ -442,13 +492,23 @@ def gauge(score):
     </svg>"""
 
 
-def show_donor_results(results, patient_group="", show_contact=False):
+def show_donor_results(results, patient_group="", show_contact=True):
     """Draws the ranked donor cards."""
     for position, donor in enumerate(results, start=1):
-        exact = str(donor.get("blood_group", "")).upper() == str(patient_group).upper()
+        group = str(donor.get("blood_group", "")).upper()
+        exact = group == str(patient_group).upper()
         tag_class = "bb-tag" if exact else "bb-tag bb-tag--sub"
-        contact = donor.get("contact", "") if show_contact else "awaiting donor consent"
+        universal = '<span class="bb-universal">universal donor</span>' if group == "O-" else ""
         delay = (position - 1) * 0.05
+
+        where = donor.get("address") or donor.get("city", "")
+        if donor.get("address") and donor.get("city"):
+            where = f"{donor['address']}, {donor['city']}"
+
+        phone = donor.get("contact", "")
+        call = (f'<a class="bb-call" href="tel:{phone.replace("-", "")}">Call {phone}</a>'
+                if show_contact and phone else
+                '<span class="bb-call">Contact shared once the donor accepts</span>')
 
         st.markdown(
             f"""
@@ -458,11 +518,13 @@ def show_donor_results(results, patient_group="", show_contact=False):
                     <span class="bb-tag__rank">no. {position}</span>
                 </div>
                 <div class="bb-main">
-                    <p class="bb-name">{donor['name']}</p>
-                    <p class="bb-meta">{donor['distance_km']} km away in {donor.get('city', '')}
-                        <span class="bb-free">&nbsp;free now</span></p>
+                    <p class="bb-name">{donor['name']}{universal}</p>
+                    <p class="bb-where"><b>{where}</b></p>
+                    <p class="bb-meta">{donor['distance_km']} km away
+                        <span class="bb-free">&nbsp;free to donate now</span></p>
+                    {call}
                     <p class="bb-why">{donor.get('reason', '')}</p>
-                    <p class="bb-id">{donor.get('donor_id', '')}<span class="bb-consent">{contact}</span></p>
+                    <p class="bb-id">{donor.get('donor_id', '')}</p>
                 </div>
                 <div class="bb-score">
                     {gauge(donor.get('score', 0))}
@@ -497,19 +559,31 @@ def show_blood_banks(banks):
         return
 
     st.markdown('<p class="bb-sub">Blood banks holding usable stock</p>', unsafe_allow_html=True)
-    rows = ""
+    cards = ""
 
     for bank in banks[:4]:
-        hours = "open 24 hours" if bank["open_24h"] else "day hours only"
+        hours = ('<span class="bb-open">open 24 hours</span>' if bank["open_24h"]
+                 else '<span class="bb-shut">day hours only</span>')
         away = bank.get("distance_km")
         far = f"{away} km" if away else "in this city"
-        rows += f"""<div class="bb-row"><div>
-            <p class="bb-row__name">{bank['name']}</p>
-            <p class="bb-row__meta">{bank['location']} &nbsp;&nbsp; {bank['available_units']} units &nbsp;&nbsp; {hours}</p>
-            <p class="bb-row__stock">Usable groups {', '.join(bank['usable_groups'])} &nbsp;&nbsp; {bank['contact']}</p>
-            </div><span class="bb-row__far">{far}</span></div>"""
+        pills = "".join(f'<span class="bb-pill">{g}</span>' for g in bank["usable_groups"])
+        phone = bank["contact"]
 
-    st.markdown(rows, unsafe_allow_html=True)
+        cards += f"""<div class="bb-fac">
+            <div class="bb-fac__count">
+                <span class="bb-fac__num">{bank['available_units']}</span>
+                <span class="bb-fac__unit">units</span>
+            </div>
+            <div class="bb-fac__body">
+                <p class="bb-fac__name">{bank['name']}</p>
+                <p class="bb-fac__meta">{bank['location']} &nbsp; {hours}</p>
+                <div class="bb-fac__groups">{pills}</div>
+                <a class="bb-call" href="tel:{phone.replace('-', '')}">Call {phone}</a>
+            </div>
+            <div class="bb-fac__far">{far}</div>
+        </div>"""
+
+    st.markdown(cards, unsafe_allow_html=True)
 
 
 def show_hospitals(hospitals):
@@ -517,18 +591,28 @@ def show_hospitals(hospitals):
         return
 
     st.markdown('<p class="bb-sub">Emergency units open now</p>', unsafe_allow_html=True)
-    rows = ""
+    cards = ""
 
     for hospital in hospitals[:4]:
         away = hospital.get("distance_km")
         far = f"{away} km" if away else "in this city"
-        rows += f"""<div class="bb-row"><div>
-            <p class="bb-row__name">{hospital['name']}</p>
-            <p class="bb-row__meta">{hospital['location']} &nbsp;&nbsp; {hospital['beds_free']} beds free</p>
-            <p class="bb-row__stock">{hospital['contact']}</p>
-            </div><span class="bb-row__far">{far}</span></div>"""
+        phone = hospital["contact"]
 
-    st.markdown(rows, unsafe_allow_html=True)
+        cards += f"""<div class="bb-fac bb-fac--care">
+            <div class="bb-fac__count">
+                <span class="bb-fac__num">{hospital['beds_free']}</span>
+                <span class="bb-fac__unit">beds free</span>
+            </div>
+            <div class="bb-fac__body">
+                <p class="bb-fac__name">{hospital['name']}</p>
+                <p class="bb-fac__meta">{hospital['location']} &nbsp;
+                    <span class="bb-open">emergency open</span></p>
+                <a class="bb-call" href="tel:{phone.replace('-', '')}">Call {phone}</a>
+            </div>
+            <div class="bb-fac__far">{far}</div>
+        </div>"""
+
+    st.markdown(cards, unsafe_allow_html=True)
 
 
 def show_sms_preview(message):
