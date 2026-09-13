@@ -59,6 +59,7 @@ def load_donors():
             "eligible": to_bool(row.get("eligible")),
             "distance_km": to_float(row.get("distance_km"), 999),
             "city": row.get("city", ""),
+            "address": row.get("address", "").strip(),
             "contact": row.get("contact", ""),
             "last_donation_days": to_int(row.get("last_donation_days"), 90),
         })
