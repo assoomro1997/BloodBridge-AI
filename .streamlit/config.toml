@@ -1,5 +1,12 @@
+# [theme]
+# primaryColor = "#A4161A"
+# backgroundColor = "#FFFFFF"
+# secondaryBackgroundColor = "#EEF1F3"
+# textColor = "#1B2A33"
+
 [theme]
-primaryColor = "#A4161A"
-backgroundColor = "#FFFFFF"
-secondaryBackgroundColor = "#EEF1F3"
-textColor = "#1B2A33"
+base = "light"
+primaryColor = "#B01218"
+backgroundColor = "#F5F7F9"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#16242D"
