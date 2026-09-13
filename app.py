@@ -50,6 +50,7 @@ def main():
     donors, banks, hospitals = get_data()
     provider = get_provider()
 
+    ui.inject_styles(ui.current_theme())
     ui.show_header(provider, len(donors), len(banks), len(hospitals))
 
     tab_form, tab_ai = st.tabs(["Quick request", "Describe it in words"])
